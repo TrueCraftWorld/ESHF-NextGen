@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>UI/WorkScreen/WorkScreenStack.qml</file>
+        <file>UI/WorkScreen/Socket.qml</file>
+        <file>StatusBar.qml</file>
+        <file>UI/WorkScreen/ModeButton.qml</file>
+        <file>UI/WorkScreen/PowerSlider.qml</file>
+        <file>UI/Assets/DoublePedal.png</file>
+        <file>UI/Assets/NoPedal.png</file>
+        <file>UI/Assets/SinglePedal.png</file>
+        <file>UI/WorkScreen/PedalButton.qml</file>
+        <file>MessagePopUp.qml</file>
+        <file>WorkScreenTOP.qml</file>
+    </qresource>
+</RCC>
