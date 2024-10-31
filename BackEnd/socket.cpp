@@ -1,5 +1,6 @@
 #include "socket.h"
 #include <QDebug>
+#include <QtQml/qqml.h>
 
 enum eshfModes	{ NO_MODE = 0, BI_BLEND=1,
                             BI_TUR=2, BI_ARTRO=3, BI_GISTERO=4,
@@ -34,17 +35,21 @@ QList<int> modesMaxPowers	{ 1, 75,
                             };
 
 
-SOCKET::SOCKET(SOCKET::SocType type, QObject *parent)
+//SOCKET::SOCKET(QObject *parent) :
+//        QObject(parent)
+//{
+//}
+
+SOCKET::SOCKET(SOCKET::SocType type, QObject *parent) :
+        QObject(parent)
 {
-    Q_UNUSED(parent);
+//    Q_UNUSED(parent);
 
     m_socketStatus = S_ENABLED;
     m_cutModeIndex = 0;
     m_coagModeIndex = 0;
     m_socketType = type;
     generatingModeList(this);
-
-
     m_cutSound.setLoopCount(QSoundEffect::Infinite);
     m_cutSound.setSource(QUrl::fromLocalFile("/usr/share/qtpr/CUT_SOUND.wav"));
     m_coagSound.setLoopCount(QSoundEffect::Infinite);
@@ -194,6 +199,21 @@ EshfMode *SOCKET::getCutMode(int index)
     if (cutModes.length() >= index) return cutModes[index];
  
     return nullptr;
+}
+
+void SOCKET::populate(SocType type)
+{
+    m_socketStatus = S_ENABLED;
+    m_cutModeIndex = 0;
+    m_coagModeIndex = 0;
+    m_socketType = type;
+    generatingModeList(this);
+    m_cutSound.setLoopCount(QSoundEffect::Infinite);
+    m_cutSound.setSource(QUrl::fromLocalFile("/usr/share/qtpr/CUT_SOUND.wav"));
+    m_coagSound.setLoopCount(QSoundEffect::Infinite);
+    if (m_socketType > SOCKET::BIPOLAR_2) m_coagSound.setSource(QUrl::fromLocalFile("/usr/share/qtpr/MONO_COAG_SOUND.wav"));
+    else m_coagSound.setSource(QUrl::fromLocalFile("/usr/share/qtpr/BI_COAG_SOUND.wav"));
+    connect(this, &SOCKET::socketStatusChanged, this, &SOCKET::soundControl);
 }
 
 void SOCKET::cutPowerChange()

@@ -269,7 +269,7 @@ Item {
                 height: parent.height
             }
             onClicked: {
-                if (!(video1.playbackState == MediaPlayer.PlayingState || video1.visible == true ||
+                if (!(video1.playbackState == MediaPlayer.PlayingState || u.visible == true ||
                       video2.playbackState == MediaPlayer.PlayingState || video2.visible == true ||
                       video3.playbackState == MediaPlayer.PlayingState || video3.visible == true ||
                       video4.playbackState == MediaPlayer.PlayingState || video4.visible == true)){
@@ -312,11 +312,13 @@ Item {
                 height: parent.height
             }
             onClicked: {
-                video1.source = "file:///home/kikorik/test1-1.mp4"
+                video1.source = "file:///home/kikorik/test1.mp4"
                 video1.visible = true
+                video1.volume = 1.0
                 video1.play()
-                video3.source = "file:///home/kikorik/test3-1.mp4"
+                video3.source = "file:///home/kikorik/test2.mp4"
                 video3.visible = true
+                video3.volume = 1.0
                 video3.play()
             }
         }
@@ -334,11 +336,13 @@ Item {
                 height: parent.height
             }
             onClicked: {
-                video2.source = "file:///home/kikorik/test2-1.mp4"
+                video2.source = "file:///home/kikorik/test0.mp4"
                 video2.visible = true
+                video2.volume = 1.0
                 video2.play()
-                video4.source = "file:///home/kikorik/test4-1.mp4"
+                video4.source = "file:///home/kikorik/test2.mkv"
                 video4.visible = true
+                video4.volume = 1.0
                 video4.play()
             }
         }

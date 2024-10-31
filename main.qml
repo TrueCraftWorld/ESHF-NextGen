@@ -49,8 +49,8 @@ ApplicationWindow {
         Text {
             id: startButtonText
             anchors.centerIn: parent
-            text: "WELCOME"
-            color: "red"
+            text: "Коснитесь для старта"
+            color: "blue"
 
         }
     }

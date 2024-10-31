@@ -1,6 +1,6 @@
 #ifndef PEDAL_H
 #define PEDAL_H
-
+#include <QtQml/qqml.h>
 #include <QObject>
 #include "BackEnd/socket.h"
 
@@ -8,7 +8,7 @@ class PEDAL : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(SOCKET* bindedSocket READ bindedSocket WRITE setBindedSocket NOTIFY bindedSocketChanged)
-
+    QML_ELEMENT
 public:
     enum pedType {  NO_PED,
                     DOUBLE_PED,

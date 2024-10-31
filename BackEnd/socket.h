@@ -9,14 +9,14 @@
 #include <QQmlEngine>
 #include <QSoundEffect>
 
-
+#include <QtQml/qqml.h>
 
 class EshfMode : public QObject{
     Q_OBJECT
     Q_PROPERTY(int currentPower READ currentPower WRITE setCurrentPower NOTIFY currentPowerChanged)
     Q_PROPERTY(int maximumPower READ maximumPower WRITE setMaximumPower NOTIFY maximumPowerChanged)
     Q_PROPERTY(QString modeName READ modeName WRITE setModeName NOTIFY modeNameChanged)
-
+    QML_ELEMENT
 
 
 public:
@@ -54,7 +54,7 @@ class SOCKET : public QObject
     Q_PROPERTY(int cutModeIndex READ cutModeIndex WRITE setcutModeIndex NOTIFY cutModeIndexChanged)
     Q_PROPERTY(SocType socketType READ socketType WRITE setSocketType NOTIFY socketTypeChanged)
     Q_PROPERTY(SocStatus socketStatus READ socketStatus WRITE setSocketStatus NOTIFY socketStatusChanged)
-
+    QML_ELEMENT
 
 public:
     enum SocType {  EMPTY,
@@ -71,7 +71,10 @@ public:
                         };
     Q_ENUM( SocStatus )
 
-    SOCKET(SOCKET::SocType = EMPTY, QObject *parent = nullptr);
+//    explicit SOCKET(QObject *parent = nullptr);
+    SOCKET(SOCKET::SocType = MONOPOLAR_1, QObject *parent = nullptr);
+
+
 
     int coagModeIndex() const;
     int cutModeIndex() const;
@@ -87,6 +90,7 @@ public:
 
     Q_INVOKABLE EshfMode* getCoagMode(int index);
     Q_INVOKABLE EshfMode* getCutMode(int index);
+    Q_INVOKABLE void populate(SOCKET::SocType);
 private:
 
     int m_coagModeIndex;

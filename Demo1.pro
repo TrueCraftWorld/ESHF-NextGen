@@ -1,6 +1,8 @@
-QT += quick qml serialport multimedia
+QT += core quick qml
+QT += serialport multimedia
 
 CONFIG += c++11
+#CONFIG += qmltypes  //другая версия подключения своих модулей
 CONFIG += link_pkgconfig
 CONFIG += disable-desktop
 SOURCES += \
@@ -9,17 +11,23 @@ SOURCES += \
         BackEnd/uartqmlbridge.cpp \
         main.cpp
 
-DEFINES += GST_USE_UNSTABLE_API
+#LIBS += -lgpiod
+
+#DEFINES += GST_USE_UNSTABLE_API
 RESOURCES += qml.qrc
 
+#QML_IMPORT_NAME = LightSide //другая версия подключения своих модулей
+#QML_IMPORT_MAJOR_VERSION = 1 //другая версия подключения своих модулей
+INCLUDEPATH +=  BackEnd \
+                "/usr/include"
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH =
+#QML_IMPORT_PATH =
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
-QML_DESIGNER_IMPORT_PATH =
+#QML_DESIGNER_IMPORT_PATH =
 
-#QT_QPA_ENABLE_TERMINAL_KEYBOARD = 0
+QT_QPA_ENABLE_TERMINAL_KEYBOARD = 0
 
 
 # Default rules for deployment.

@@ -34,7 +34,7 @@ Rectangle {
             Rectangle {
                 Layout.alignment: Qt.AlignCenter
                 radius: 5
-                color: pedalButtonBack.socket === singlePed.bindedSocket ? "white" : "gray"
+                color: pedalButtonBack.socket == singlePed.bindedSocket ? "white" : "gray"
                 Layout.maximumWidth: (pedSelectPopup.width * 1/3)
                 Layout.maximumHeight: pedSelectPopup.height
                 Layout.preferredWidth:  (pedSelectPopup.width * 1/3) - 12
@@ -52,7 +52,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        if (pedalButtonBack.socket === doublePed.bindedSocket)  doublePed.setBindedSocket(null)
+                        if (pedalButtonBack.socket == doublePed.bindedSocket)  doublePed.setBindedSocket(null)
                         singlePed.setBindedSocket(pedalButtonBack.socket)
                         pedSelectPopup.close()
                     }
@@ -61,7 +61,7 @@ Rectangle {
             Rectangle {
                 Layout.alignment: Qt.AlignCenter
                 radius: 5
-                color: pedalButtonBack.socket === doublePed.bindedSocket ? "white" : "gray"
+                color: pedalButtonBack.socket == doublePed.bindedSocket ? "white" : "gray"
                 Layout.maximumWidth: (pedSelectPopup.width * 1/3)
                 Layout.maximumHeight: pedSelectPopup.height
                 Layout.preferredWidth:  (pedSelectPopup.width * 1/3) - 12
@@ -80,7 +80,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        if (pedalButtonBack.socket === singlePed.bindedSocket)  singlePed.setBindedSocket(null)
+                        if (pedalButtonBack.socket == singlePed.bindedSocket)  singlePed.setBindedSocket(null)
                         doublePed.setBindedSocket(pedalButtonBack.socket)
                         pedSelectPopup.close()
                     }
@@ -89,7 +89,7 @@ Rectangle {
             Rectangle {
                 Layout.alignment: Qt.AlignCenter
                 radius: 5
-                color: pedalButtonBack.socket === null ? "white" : "gray"
+                color: pedalButtonBack.socket == null ? "white" : "gray"
                 Layout.maximumWidth: (pedSelectPopup.width * 1/3)
                 Layout.maximumHeight: pedSelectPopup.height
                 Layout.preferredWidth:  (pedSelectPopup.width * 1/3) - 12
@@ -108,8 +108,8 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        if (pedalButtonBack.socket === singlePed.bindedSocket)  singlePed.setBindedSocket(null)
-                        if (pedalButtonBack.socket === doublePed.bindedSocket)  doublePed.setBindedSocket(null)
+                        if (pedalButtonBack.socket == singlePed.bindedSocket)  singlePed.setBindedSocket(null)
+                        if (pedalButtonBack.socket == doublePed.bindedSocket)  doublePed.setBindedSocket(null)
                         pedSelectPopup.close()
                     }
                 }
@@ -132,9 +132,9 @@ Rectangle {
     Image {
         id: pedalIcon
         source: {
-            if (pedalButtonBack.socket === singlePed.bindedSocket) {
+            if (pedalButtonBack.socket == singlePed.bindedSocket) {
                 return "qrc:/UI/Assets/SinglePedal.png"
-            } else if (pedalButtonBack.socket === doublePed.bindedSocket){
+            } else if (pedalButtonBack.socket == doublePed.bindedSocket){
                 return "qrc:/UI/Assets/DoublePedal.png"
             } else {
                 return "qrc:/UI/Assets/NoPedal.png"
